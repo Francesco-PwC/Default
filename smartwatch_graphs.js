@@ -107,5 +107,3 @@ myChart_ALT = new Chart(ctx_ALT, {
         }
     }
 });
-
-export let myChart_ALT, myChart_HEART;

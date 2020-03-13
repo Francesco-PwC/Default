@@ -1,6 +1,7 @@
 /*
 *   BPM GRAPH
 */
+
 //To manage different colors
 var pointBackgroundColors = ["transparent"];
 

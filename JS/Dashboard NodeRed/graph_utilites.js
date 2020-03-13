@@ -1,6 +1,7 @@
 function addData(chart, label, d, index, type) {
     chart.data.labels.push(label);
     var dat = parseInt(d);
+    /*
     if (type != "altitude" && index > 10){
         if (type != "heartrate"){
             removeData(chart, type);
@@ -10,6 +11,7 @@ function addData(chart, label, d, index, type) {
     } else if (index > 20){
         removeData(chart, type);
     }
+    */
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(dat);
         var input = dataset.data;

@@ -1,0 +1,165 @@
+<style>{{msg.style_smart}}</style>
+
+<div style="display:inline;margin-left:3%">
+    <select id="smartwatch_ids"></select>
+    <select id="smartwatch_times" display="none">
+        <option value="30">30s</option>
+        <option value="60">60s</option>
+        <option value="300">5m</option>
+        <option value="600">10m</option>
+        <option value="1800">30m</option>
+        <option value="3600">1h</option>
+    </select>
+    <select id="refresh_times" name="persistent" display="none">
+        <option value="none">no</option>
+        <option value="20">20s</option>
+        <option value="60">1m</option>
+        <option value="120">2m</option>
+        <option value="300">5m</option>
+    </select>
+    <!--<label for="persistent">Persistent</label><br>-->
+    <button id="smartwatch_button" type="button">Click!</button>
+</div>
+<div id="containerHsv0" style="display:flex;margin-bottom: 2%;">
+    <i class="fa fa-heartbeat" style="font-size:30px;color:#E74C3C;margin-bottom: 2%"></i>
+    <p style="display:inline;margin-left:3%">HEART RATE</p>
+</div>
+<div id="containerHeart" style="width:100%">
+    <canvas id="heartChart"></canvas>
+</div>
+<div id="container_s_data">
+<div id="containerHeartBeat">
+    <div id="containerHeartVal" style="width: 100%;position: relative;display: flex;z-index: 10;">
+        <i class="fa fa-heart" style="font-size:30px;color:#E74C3C;margin-right: 2%;width: 75%;text-align: right;margin-top: 6%;"></i>
+        <p id="heartText"></p>
+        <a class="bps_text" style="position: absolute;display: inline;width: 100%;">ACTUAL BPS</a>
+    </div>
+</div>
+<div id="containerSound">
+    <div id="containerSoundVal" style="width: 100%;position: relative;display: flex;z-index: 10;">
+        <i class="fa fa-headphones" style="font-size:30px;color:#D35400;margin-right: 2%;width: 75%;text-align: right;margin-top: 6%;"></i>
+        <p id="soundText"></p>
+        <a class="db_text" style="position: absolute;display: inline;width: 100%;">DECIBEL</a>
+    </div>
+</div>
+</div>
+<div id="containerHsv1" style="display:flex;margin-bottom: 2%;">
+    <i class="fa fa-mountain" style="font-size:30px;color:#009C41;margin-bottom: 2%"></i>
+    <p style="display:inline;margin-left:3%">ALTITUDE</p>
+</div>
+<div id="containerAltitude" style="width:100%">
+    <canvas id="altitudeChart"></canvas>
+</div>
+
+<script>
+
+var select_dev = document.getElementById('smartwatch_ids');
+var select_times = document.getElementById('smartwatch_times');
+var ask_button = document.getElementById('smartwatch_button');
+var persistent = document.getElementById("refresh_times");
+
+var id_query, h_query, repeat_val, first_request_done;
+var request_count = 0;
+var scope_SMARTW = scope;
+
+var chart_template_H;
+var timer_socket;
+
+var DATA_RANGE_INTERVAL = 30;
+
+ask_button.onclick = function()
+{
+    if(request_count > 0)
+    {
+        removeDataSet(myChart_HEART, 0);
+        removeDataSet(myChart_ALT, 0);
+    }
+    
+    id_query = select_dev.options[select_dev.selectedIndex].value;
+    h_query = select_times.options[select_times.selectedIndex].value;
+    repeat_val = persistent.options[persistent.selectedIndex].value;
+    
+    var msg = {
+        DEVICE_ID: id_query,
+        TIMERANGE: parseInt(h_query)
+    }
+    console.log("sending message: " + msg);
+    scope_SMARTW.send({
+        payload: msg,
+        topic: "TEST HTTP REQUEST - SMARTWATCH"
+    });
+    var repeat = false;
+    if (repeat_val !== "none")
+    {
+        repeat = true;
+        var msg_sock = {
+            DEVICE_ID: id_query,
+            TIMERANGE: DATA_RANGE_INTERVAL
+        }
+        if (repeat){
+            timer_socket = setInterval(function(){
+                scope_SMARTW.send({
+                    payload: msg_sock,
+                    topic: "TEST SOCKET - SMARTWATCH"
+                });
+            }, repeat_val * 1000);
+        }
+        console.log("msg sent after: "+ repeat_val +" seconds");
+    } 
+    if (repeat_val === "none") {
+        repeat = false;
+        clearInterval(timer_socket);
+    }
+    request_count++;
+}
+
+var pay_arr;
+
+scope_SMARTW.$watch('msg', function(msg){
+    if (typeof msg !== 'undefined'){
+        console.log(msg.payload);
+        pay_arr = msg.payload;
+        for (var j = 0; j < pay_arr.length;j++){
+            populateDropDown(pay_arr[j], select_dev);
+        }
+    }
+})
+
+function removeDataSet(chart, index) {
+    chart.data.labels.length = 0;
+    chart.data.datasets[index].data.length = 0;
+    chart.update();
+    console.log(chart.config.data.datasets[index]);
+}
+
+function isChecked(checkbox) {
+    return checkbox.checked;
+}
+
+function populateDropDown(element, select){
+    var option = document.createElement("option");
+    option.text = element;
+    option.value = element;
+    select.appendChild(option);
+}
+
+/*
+select_dev.onchange = function() {
+    var index = this.selectedIndex;
+    //var inputText = this.children[index].innerHTML.trim();
+    var inputText = this.children[index].value;
+    id_query = inputText;
+    dev_confirmed = true;
+    console.log(inputText + " " + dev_confirmed);
+}
+
+select_times.onchange = function() {
+    var index = this.selectedIndex;
+    var inputText = this.children[index].value;
+    h_query = inputText;
+    h_confirmed = true;
+    console.log(inputText + " "+ h_confirmed);
+}
+*/
+
+</script>

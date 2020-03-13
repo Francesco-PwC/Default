@@ -1,0 +1,1 @@
+[{"id":"add8de25.c26a7","type":"function","z":"5413639e.9e0bcc","name":"Set Dropdown deviceList","func":"var data = msg.payload;\nvar titles = [];\nfor (var i = 0 ; i < data.length;i++){\n    titles[i] = data[i].distinct;\n}\nmsg.payload = titles;\nmsg.hasSmartwatchEnded = true;\nreturn msg;","outputs":1,"noerr":0,"x":390,"y":560,"wires":[["309abff.da2be4","98c1a9c0.a76308"]]}]

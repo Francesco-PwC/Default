@@ -1,0 +1,79 @@
+<script>
+var text_heart = document.getElementById("heartText");
+var count_heart = 0;
+var chart_h;
+var scope_SM = scope;
+
+scope_SM.$watch('msg', function(msg){
+    if (typeof msg !== 'undefined'){
+        console.log("msg received !== undefined");
+        console.log(msg.sensor_value);
+
+        //Setting timestamp
+        var timestamp;
+        
+        //Setting value
+        var value = msg.sensor_value;
+        
+        if (msg.timestamp)
+        {
+            var t1 = msg.timestamp;
+            var t = new Date(t1).toString();
+            console.log(t);
+            var hours = t.substring(16,18);
+            var minutes = t.substring(19,21);
+            var seconds = t.substring(22,24);
+            timestamp = seconds;
+        }
+        
+        //Switching topic
+        switch(msg.topic){
+            case "barometer":
+                //Setting type
+                type="altitude";
+                
+                //value floor
+                var val = Math.floor(parseInt(value, 10));
+                
+                //Graph routine
+                refreshGraphRoutineByType(myChart_ALT,timestamp,val,type);
+                break;
+            case "heartrate":
+                //Setting type
+                type="heartrate";
+                
+                //Setting thresholds
+                if (msg.min != null && msg.max != null)
+                {
+                    min = msg.min;
+                    max = msg.max;
+                }
+                
+                //Graph routine
+                refreshGraphRoutineByType(myChart_HEART,timestamp,value,type);
+            	break;
+            case "decibel":
+                //soundRoutine(value, scope);
+            	break;
+        }
+        
+
+        //addData(myChart_HEART,seconds,value,count_heart++, type);
+    }
+})
+
+function refreshGraphRoutineByType(graph,times, value, type){
+    addData(graph,times,value,count_heart++, type);
+}
+
+/*
+function soundRoutine(value, node){
+    var val = value;
+    text_sound.innerHTML = val;
+    node.send({
+        payload: value,
+        topic: "sound"
+    });
+}
+*/
+</script>

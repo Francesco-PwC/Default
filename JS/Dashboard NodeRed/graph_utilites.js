@@ -126,8 +126,8 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
 
 
 function updateGraphOnScroll(graph, chart, device, refresh, index){
-    refresh = persistent_SM.options[persistent_SM.selectedIndex].value;
-    device_id = device.options[device.selectedIndex].value;
+    var refresh_time = refresh.options[refresh.selectedIndex].value;
+    var device_id = device.options[device.selectedIndex].value;
     console.log("setting listener...");
     graph.addEventListener("wheel", event => {
         delta = Math.sign(event.deltaY);

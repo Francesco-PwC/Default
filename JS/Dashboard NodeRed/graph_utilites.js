@@ -125,9 +125,9 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
 }
 
 
-function updateGraphOnScroll(graph, chart, index){
-    repeat_val_SM = persistent_SM.options[persistent_SM.selectedIndex].value;
-    id_query = select_dev.options[select_dev.selectedIndex].value;
+function updateGraphOnScroll(graph, chart, device, refresh, index){
+    refresh = persistent_SM.options[persistent_SM.selectedIndex].value;
+    device_id = device.options[device.selectedIndex].value;
     console.log("setting listener...");
     graph.addEventListener("wheel", event => {
         delta = Math.sign(event.deltaY);
@@ -138,7 +138,7 @@ function updateGraphOnScroll(graph, chart, index){
                 removeDataSet(chart, index);
                 prev_val = selectElement('smartwatch_times', delta);
                 var msg = {
-                    DEVICE_ID: id_query,
+                    DEVICE_ID: device_id,
                     TIMERANGE: parseInt(prev_val)
                 }
                 console.log("sending message while scrolling UP on graph: " + msg);
@@ -156,7 +156,7 @@ function updateGraphOnScroll(graph, chart, index){
                 removeDataSet(chart, index);
                 next_val = selectElement('smartwatch_times', delta);
                 var msg = {
-                    DEVICE_ID: id_query,
+                    DEVICE_ID: device_id,
                     TIMERANGE: parseInt(next_val)
                 }
                 console.log("sending message while scrolling DOWN on graph: " + msg);

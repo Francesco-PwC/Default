@@ -128,12 +128,12 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
 function updateGraphOnScroll(graph, chart, device, refresh, index){
     var refresh_time = refresh.options[refresh.selectedIndex].value;
     console.log("refresh time: "+ refresh_time);
-    var device_id = device.options[device.selectedIndex].value;
     console.log("device id: "+ device_id);
     console.log("setting listener...");
     graph.addEventListener("wheel", event => {
         delta = Math.sign(event.deltaY);
         if (delta > 0){
+            var device_id = device.options[device.selectedIndex].value;
             zoom_in++;
             zoom_out = 0;
             if (zoom_in >= 10){
@@ -152,6 +152,7 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
             }
         }
         if (delta < 0){
+            var device_id = device.options[device.selectedIndex].value;
             zoom_out++;
             zoom_in = 0;
             if (zoom_out >= 10){

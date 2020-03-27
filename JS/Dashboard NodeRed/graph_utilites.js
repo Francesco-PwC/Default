@@ -176,3 +176,20 @@ function UpdateGraphOnScroll(graph, chart, index){
     });
     console.log("listener set.");
 }
+
+
+function selectElement(id, delta) {    
+    let element = document.getElementById(id);
+    let value_to_select = element.options[element.selectedIndex].value;
+    if (delta > 0){
+        if (typeof element.options[element.selectedIndex - 1] !== "undefined"){
+            value_to_select = element.options[element.selectedIndex - 1].value;
+        }
+    }
+    if (delta < 0){
+        if (typeof element.options[element.selectedIndex + 1] !== "undefined"){
+            value_to_select = element.options[element.selectedIndex + 1].value;
+        }
+    }
+    return element.value = value_to_select;
+}

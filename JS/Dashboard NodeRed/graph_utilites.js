@@ -124,3 +124,55 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     addData(graph,times,value,counter,type);
 }
 
+
+function UpdateGraphOnScroll(graph, chart, index){
+    repeat_val_SM = persistent_SM.options[persistent_SM.selectedIndex].value;
+    id_query = select_dev.options[select_dev.selectedIndex].value;
+    console.log("setting listener...");
+    graph.addEventListener("wheel", event => {
+        delta = Math.sign(event.deltaY);
+        if (delta > 0){
+            zoom_in++;
+            zoom_out = 0;
+            if (zoom_in >= 10){
+                removeDataSet(chart, index);
+                prev_val = selectElement('smartwatch_times', delta);
+                var msg = {
+                    DEVICE_ID: id_query,
+                    TIMERANGE: parseInt(prev_val)
+                }
+                console.log("sending message while scrolling UP on graph: " + msg);
+                scope_SMARTW.send({
+                    payload: msg,
+                    topic: "TEST HTTP REQUEST ON SCROLL - SMARTWATCH"
+                });
+                zoom_in = 0;
+            }
+        }
+        if (delta < 0){
+            zoom_out++;
+            zoom_in = 0;
+            if (zoom_out >= 10){
+                removeDataSet(chart, index);
+                next_val = selectElement('smartwatch_times', delta);
+                var msg = {
+                    DEVICE_ID: id_query,
+                    TIMERANGE: parseInt(next_val)
+                }
+                console.log("sending message while scrolling DOWN on graph: " + msg);
+                scope_SMARTW.send({
+                    payload: msg,
+                    topic: "TEST HTTP REQUEST ON SCROLL - SMARTWATCH"
+                });
+                zoom_out = 0;
+            }
+        }
+        /*
+        if (zoom_in >= 4 || zoom_out >= 4){
+            selectElement('smartwatch_times', delta);
+        }*/
+        console.info("DIFF: "+delta);
+        event.preventDefault();
+    });
+    console.log("listener set.");
+}

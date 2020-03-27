@@ -109,4 +109,6 @@ myChart_ALT = new Chart(ctx_ALT, {
     }
 });
 
-updateGraphOnScroll(ctx_H, myChart_HEART, 0);
+var id_select = document.getElemenntById('smartwatch_ids');
+var ref_select = document.getElemenntById('refresh_times');
+updateGraphOnScroll(ctx_H, myChart_HEART, id_select, ref_select, 0);

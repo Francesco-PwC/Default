@@ -125,7 +125,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
 }
 
 
-function UpdateGraphOnScroll(graph, chart, index){
+function updateGraphOnScroll(graph, chart, index){
     repeat_val_SM = persistent_SM.options[persistent_SM.selectedIndex].value;
     id_query = select_dev.options[select_dev.selectedIndex].value;
     console.log("setting listener...");

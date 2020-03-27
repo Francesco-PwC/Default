@@ -5,7 +5,7 @@ function addData(chart, label, d, index, type) {
     var dat = parseInt(d);
     
     switch (type) {
-        case ('heartrate'):
+        case 'heartrate':
             if (index > top_limit){
                 removeData(chart, type);
             }

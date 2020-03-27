@@ -133,7 +133,6 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
         delta = Math.sign(event.deltaY);
         if (delta > 0){
             var device_id = device.options[device.selectedIndex].value;
-            console.log("device id: "+ device_id);
             zoom_in++;
             zoom_out = 0;
             if (zoom_in >= 10){
@@ -153,7 +152,6 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
         }
         if (delta < 0){
             var device_id = device.options[device.selectedIndex].value;
-            console.log("device id: "+ device_id);
             zoom_out++;
             zoom_in = 0;
             if (zoom_out >= 10){

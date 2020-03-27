@@ -200,9 +200,9 @@ function increaseBar(incr_val, diff) {
     var elem = document.getElementById("Bar");
     var incr = 0;
     var increase = true;
-    if (incr_val == 0){
+    if (diff == 0){
         incr = elem.offsetWidth;
-    } else if (incr_val > 0){
+    } else if (diff > 0){
         incr += incr_val * 10;
     } else {
         incr -= incr_val * 10;

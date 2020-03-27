@@ -198,7 +198,7 @@ function selectElement(id, delta) {
 
 function increaseBar(incr_val, diff) {
     var elem = document.getElementById("Bar");
-    var incr;
+    var incr = 0;
     var increase = true;
     if (incr_val == 0){
         incr = elem.offsetWidth;

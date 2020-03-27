@@ -124,7 +124,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     addData(graph,times,value,counter,type);
 }
 
-
+const max_zoom = 10;
 function updateGraphOnScroll(graph, chart, device, refresh, index){
     var refresh_time = refresh.options[refresh.selectedIndex].value;
     console.log("refresh time: "+ refresh_time);
@@ -132,10 +132,11 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
     graph.addEventListener("wheel", event => {
         delta = Math.sign(event.deltaY);
         if (delta > 0){
+            increaseBar(zoom_in);
             var device_id = device.options[device.selectedIndex].value;
             zoom_in++;
             zoom_out = 0;
-            if (zoom_in >= 10){
+            if (zoom_in >= max_zoom){
                 removeDataSet(chart, index);
                 prev_val = selectElement('smartwatch_times', delta);
                 var msg = {
@@ -151,10 +152,11 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
             }
         }
         if (delta < 0){
+            increaseBar(zoom_out);
             var device_id = device.options[device.selectedIndex].value;
             zoom_out++;
             zoom_in = 0;
-            if (zoom_out >= 10){
+            if (zoom_out >= max_zoom){
                 removeDataSet(chart, index);
                 next_val = selectElement('smartwatch_times', delta);
                 var msg = {
@@ -169,10 +171,6 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
                 zoom_out = 0;
             }
         }
-        /*
-        if (zoom_in >= 4 || zoom_out >= 4){
-            selectElement('smartwatch_times', delta);
-        }*/
         console.info("DIFF: "+delta);
         event.preventDefault();
     });
@@ -194,4 +192,23 @@ function selectElement(id, delta) {
         }
     }
     return element.value = value_to_select;
+}
+
+var i = 0;
+function increaseBar(incr_val) {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("Bar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= incr_val) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = incr_val * 10 + "%"; //10 for %
+      }
+    }
+  }
 }

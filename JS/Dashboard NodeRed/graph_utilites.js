@@ -1,14 +1,20 @@
 var top_limit;
-
+//ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
+var addable_values = 0;
 function addData(chart, label, d, index, type) {
     chart.data.labels.push(label);
     var dat = parseInt(d);
     
+    /*
     switch (type) {
         case 'heartrate':
-            if (index > top_limit){
-                removeData(chart, type);
-            }
+            addable_values = 10;
+            break;
+        case 'altitude':
+    }
+    */
+    if (index >= top_limit + addable_values){
+        removeData(chart,type);
     }
     //Graphs limits
     /*

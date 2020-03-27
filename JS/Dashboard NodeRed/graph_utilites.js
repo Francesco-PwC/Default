@@ -125,6 +125,8 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
 }
 
 const max_zoom = 10;
+var zoom_in = 0;
+var zoom_out = 0;
 function updateGraphOnScroll(graph, chart, device, refresh, index){
     var refresh_time = refresh.options[refresh.selectedIndex].value;
     console.log("refresh time: "+ refresh_time);

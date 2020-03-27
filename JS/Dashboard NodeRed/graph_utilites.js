@@ -196,6 +196,14 @@ function selectElement(id, delta) {
     return element.value = value_to_select;
 }
 
+function increaseBar(incr_val, diff) {
+    var elem = document.getElementById("Bar");
+    var incr = incr_val * 10 * diff;
+    console.log("INCREASE: "+ incr);
+    elem.style.width = incr + "%"; //10 for %
+}
+
+/*
 var i = 0;
 function increaseBar(incr_val, diff) {
   if (i == 0) {
@@ -215,4 +223,4 @@ function increaseBar(incr_val, diff) {
       }
     }
   }
-}
+}*/

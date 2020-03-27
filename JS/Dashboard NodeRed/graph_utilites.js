@@ -73,3 +73,7 @@ function removeData(chart, t){
     });
     chart.update();
 }
+
+function refreshGraphRoutineByType(graph,times, value, type, counter){
+    addData(graph,times,value,counter++, type);
+}

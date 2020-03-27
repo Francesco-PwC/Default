@@ -198,7 +198,13 @@ function selectElement(id, delta) {
 
 function increaseBar(incr_val, diff) {
     var elem = document.getElementById("Bar");
-    var incr = incr_val * 10 * diff;
+    var incr;
+    var increase = true;
+    if (incr_val == 0){
+        incr = incr;
+    } else {
+        incr = incr_val * 10 * diff;
+    }
     console.log("INCREASE: "+ incr);
     elem.style.width = incr + "%"; //10 for %
 }

@@ -201,7 +201,7 @@ function increaseBar(incr_val, diff) {
     var incr;
     var increase = true;
     if (incr_val == 0){
-        incr = incr;
+        incr = elem.style.width;
     } else {
         incr = incr_val * 10 * diff;
     }

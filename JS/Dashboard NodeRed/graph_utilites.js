@@ -202,8 +202,10 @@ function increaseBar(incr_val, diff) {
     var increase = true;
     if (incr_val == 0){
         incr = elem.offsetWidth;
+    } else if (incr_val > 0){
+        incr += incr_val * 10;
     } else {
-        incr = incr_val * 10 * diff;
+        incr -= incr_val * 10;
     }
     console.log("INCREASE: "+ incr);
     elem.style.width = incr + "%"; //10 for %

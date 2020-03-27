@@ -132,7 +132,7 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
     graph.addEventListener("wheel", event => {
         delta = Math.sign(event.deltaY);
         if (delta > 0){
-            increaseBar(zoom_in);
+            increaseBar(zoom_in, delta);
             var device_id = device.options[device.selectedIndex].value;
             zoom_in++;
             zoom_out = 0;
@@ -152,7 +152,7 @@ function updateGraphOnScroll(graph, chart, device, refresh, index){
             }
         }
         if (delta < 0){
-            increaseBar(zoom_out);
+            increaseBar(zoom_out, delta);
             var device_id = device.options[device.selectedIndex].value;
             zoom_out++;
             zoom_in = 0;
@@ -195,7 +195,7 @@ function selectElement(id, delta) {
 }
 
 var i = 0;
-function increaseBar(incr_val) {
+function increaseBar(incr_val, diff) {
   if (i == 0) {
     i = 1;
     var elem = document.getElementById("Bar");
@@ -207,7 +207,7 @@ function increaseBar(incr_val) {
         i = 0;
       } else {
         width++;
-        elem.style.width = incr_val * 10 + "%"; //10 for %
+        elem.style.width = incr_val * 10 * diff + "%"; //10 for %
       }
     }
   }

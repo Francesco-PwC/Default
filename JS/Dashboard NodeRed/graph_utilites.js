@@ -30,7 +30,7 @@ function addData(chart, label, d, index, type) {
             chart.config.data.datasets[0].backgroundColor = gradientHE;
             //chart.config.data.datasets[0]["pointBackgroundColor"] = 'rgba(70,102,255, 1)';
             console.log("dataset: "+ dataset.data[0].pointBackgroundColor);
-            if (min && max){
+            if (typeof min !== 'undefined' && typeof max !== 'undefined'){
                 if (dat >= min && dat <= max) {
                     console.log("normal value: "+dat);
                     pointBackgroundColors.push("transparent");

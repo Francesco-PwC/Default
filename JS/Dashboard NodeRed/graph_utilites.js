@@ -1,8 +1,17 @@
+var top_limit;
+
 function addData(chart, label, d, index, type) {
     chart.data.labels.push(label);
     var dat = parseInt(d);
     
+    switch (type) {
+        case ('heartrate'):
+            if (index > top_limit){
+                removeData(chart, type);
+            }
+    }
     //Graphs limits
+    /*
     if (type != "altitude" && index > 10){
         if (type != "heartrate"){
             removeData(chart, type);
@@ -12,6 +21,7 @@ function addData(chart, label, d, index, type) {
     } else if (index > 20){
         removeData(chart, type);
     }
+    */
     
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(dat);
@@ -104,7 +114,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
             top_lim = 300 + addable_values;
             break;
     }
-    console.log(top_lim);
-    addData(graph,times,value,top_lim, type);
+    top_limit = top_lim;
+    addData(graph,times,value,counter,type);
 }
 

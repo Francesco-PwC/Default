@@ -18,12 +18,14 @@ function addData(chart, label, d, index, type) {
         var input = dataset.data;
         //debug
         if (type === "heartrate"){
-            console.log("HEARTRATE: "+ input);
+            console.log("HEARTRATE:");
+            console.log(input);
             console.log(pointBackgroundColors);
         }
         
         if (type === "altitude"){
-            console.log("ALTITUDE: "+ input);
+            console.log("ALTITUDE:");
+            console.log(input);
             dataset.backgroundColor = gradient;
             dataset.hoverBackgroundColor = "rgba(0,212,255,0.2)";
             dataset.borderColor = ("transparent");

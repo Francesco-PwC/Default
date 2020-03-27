@@ -77,6 +77,34 @@ function removeData(chart, t){
     chart.update();
 }
 
-function refreshGraphRoutineByType(graph,times, value, type, counter){
+function refreshGraphRoutineByType(graph, times, value, type, counter){
     addData(graph,times,value,counter, type);
 }
+function refreshGraphRoutineByType(graph, times, value, type, counter, storical_time){
+    //Storical graph Limits
+    var addable_values = 10;
+    let top_lim = storical_time;
+    switch(top_lim){
+        case(30):
+            top_lim = 4;
+            break;
+        case(60):
+            top_lim = 6;
+            break;
+        case(300):
+            top_lim = 30 + addable_values;
+            break;
+        case(600):
+            top_lim = 60 + addable_values;
+            break;
+        case(1800):
+            top_lim = 180 + addable_values;
+            break;
+        case(3000):
+            top_lim = 300 + addable_values;
+            break;
+    }
+    console.log(top_lim);
+    addData(graph,times,value,top_lim, type);
+}
+

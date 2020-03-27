@@ -207,6 +207,7 @@ function increaseBar(incr_val, diff) {
         i = 0;
       } else {
         width++;
+        console.log("INCREASE: "+ incr_val + " 10 " + diff);
         elem.style.width = incr_val * 10 * diff + "%"; //10 for %
       }
     }

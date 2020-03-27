@@ -30,23 +30,24 @@ function addData(chart, label, d, index, type) {
             chart.config.data.datasets[0].backgroundColor = gradientHE;
             //chart.config.data.datasets[0]["pointBackgroundColor"] = 'rgba(70,102,255, 1)';
             console.log("dataset: "+ dataset.data[0].pointBackgroundColor);
-            console.log("Heartrate - min: "+min+" max: "+max + " act: "+dat);
-            if (dat >= min && dat <= max) {
-                console.log("normal value: "+dat);
-                pointBackgroundColors.push("transparent");
-            }
-            if (dat > max){
-                console.log(dat+ " > " +max);
-                //input.pointBackgroundColor = 'red';
-                //chart.config.data.datasets[0].data.radius = '5';
-                pointBackgroundColors.push("red");
-            } 
-            if (dat < min) {
-                console.log(dat+ " < " +max);
-                pointBackgroundColors.push("red");
-                //chart.config.data.datasets[0]['pointBackgroundColor'][0] = 'green';
-                //chart.config.data.datasets[0].radius = '5';
-                //dataset.pointBackgroundColor = "green";
+            if (min && max){
+                if (dat >= min && dat <= max) {
+                    console.log("normal value: "+dat);
+                    pointBackgroundColors.push("transparent");
+                }
+                if (dat > max){
+                    console.log(dat+ " > " +max);
+                    //input.pointBackgroundColor = 'red';
+                    //chart.config.data.datasets[0].data.radius = '5';
+                    pointBackgroundColors.push("red");
+                } 
+                if (dat < min) {
+                    console.log(dat+ " < " +max);
+                    pointBackgroundColors.push("red");
+                    //chart.config.data.datasets[0]['pointBackgroundColor'][0] = 'green';
+                    //chart.config.data.datasets[0].radius = '5';
+                    //dataset.pointBackgroundColor = "green";
+                }
             }
         }
         if (type === "roundPerMinute"){

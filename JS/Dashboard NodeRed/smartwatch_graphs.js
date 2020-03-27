@@ -108,3 +108,4 @@ myChart_ALT = new Chart(ctx_ALT, {
         }
     }
 });
+UpdateGraphOnScroll(ctx_H, myChart_HEART, 0);

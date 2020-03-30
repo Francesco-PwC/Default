@@ -111,7 +111,7 @@ myChart_ALT = new Chart(ctx_ALT, {
 
 var id_select = document.getElementById('smartwatch_ids');
 var ref_select = document.getElementById('refresh_times');
-var containerH = document.getElementByid('containerHEART');
+var containerH = document.getElementByid('containerHeart');
 //updateGraphOnScroll(ctx_H, myChart_HEART, id_select, ref_select, 0);
 Scroll(containerH, getChartLength(myChart_HEART));
 

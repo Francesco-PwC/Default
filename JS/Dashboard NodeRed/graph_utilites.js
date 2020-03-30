@@ -123,7 +123,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     top_limit = top_lim;
     addData(graph,times,value,counter,type);
 }
-
+/*
 const max_zoom = 10;
 var zoom_in = 0;
 var zoom_out = 0;
@@ -194,8 +194,8 @@ function selectElement(id, delta) {
         }
     }
     return element.value = value_to_select;
-}
-
+}*/
+/*
 function increaseBar(incr_val, diff) {
     var elem = document.getElementById("Bar");
     var incr = 0;
@@ -209,26 +209,140 @@ function increaseBar(incr_val, diff) {
     }
     console.log("INCREASE: "+ incr);
     elem.style.width = incr + "%"; //10 for %
-}
+}*/
 
-/*
-var i = 0;
-function increaseBar(incr_val, diff) {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("Bar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= incr_val) {
-        clearInterval(id);
-        i = 0;
+var zoom_in = 0;
+var zoom_out = 0;
+
+var is_zoomable = false;
+var first_z = false;
+
+var container_grafico = document.getElementById("containerHeart");
+
+function Scroll(graph, max_length) {
+  graph.addEventListener("wheel", (event) => {
+    delta = Math.sign(event.deltaY);
+    if (delta > 0) {
+      //SCROLL DOWN
+      if (zoom_out < 0) {
+        zoom_in = -zoom_out + 1;
+      }
+      console.log("zoom in: " + zoom_in);
+      if (increaseBar(zoom_in, delta, max_length) <= 100) {
+        is_zoomable = true;
       } else {
-        width++;
-        var incr = incr_val * 10 * diff;
-        console.log("INCREASE: "+ incr);
-        elem.style.width = incr + "%"; //10 for %
+        is_zoomable = false;
+      }
+      if (is_zoomable && zoom_in < Math.floor(max_length / 2)) {
+        zoomGraph(heartChart, delta, zoom_in);
+        zoom_in++;
+        zoom_out = 0;
       }
     }
+    if (delta < 0) {
+      //SCROLL UP
+      if (zoom_in > 0) {
+        zoom_out = -zoom_in;
+      } 
+      console.log("zoom out: " + zoom_out);
+      if (increaseBar(zoom_out, delta, max_length) >= 0) {
+        is_zoomable = true;
+      } else {
+        is_zoomable = false;
+      }
+      if (is_zoomable && zoom_out <= 0) {
+        zoomGraph(heartChart, delta, zoom_out);
+        console.log("zoom_out");
+        zoom_out++;
+        zoom_in = 0;
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+
+function increaseBar(incr_val, diff, max_l) {
+  var elem = document.getElementById("Bar");
+  var increase = true;
+  var incr = 0;
+  var step = Math.ceil(100 / max_l * 2);
+  if (diff > 0 && incr <= max_l) {
+    incr += incr_val * step;
   }
-}*/
+  if (diff < 0) {
+    incr -= incr_val * step;
+  }
+  if (incr < 100 || incr > 0) {
+    elem.style.width = incr + "%"; //10 for %
+    if(incr >= 95){
+      elem.style.width = "100%"; //10 for %
+    }
+  }
+  return incr;
+}
+
+var graphBuffer, labelBuffer, zoomBuffer, can_zoom, counter_heart_T;
+var is_ready = 0;
+var tracking_dataset_head = [];
+var tracking_dataset_head_lab = [];
+var tracking_dataset_tail = [];
+var tracking_dataset_tail_lab = [];
+
+function zoomGraph(graph_obj, delta, index) {
+  var full_info_dataset, COMPLETE_dataset, COMPLETE_labels, zoomed_dataset, zoomed_labels;
+  if (delta > 0 && is_ready === 0) {
+    is_ready++;
+    full_info_dataset = graph_obj.data;
+    COMPLETE_dataset = full_info_dataset.datasets[0].data.slice(0);
+    COMPLETE_labels = full_info_dataset.labels.slice(0);
+    graphBuffer = COMPLETE_dataset;
+    labelBuffer = COMPLETE_labels;
+    zoomed_dataset = COMPLETE_dataset.slice(0); //copy
+    zoomed_labels = COMPLETE_labels.slice(0); //copy
+    zoomBuffer = zoomed_dataset;
+  } else {
+    COMPLETE_dataset = graphBuffer;
+    COMPLETE_labels = labelBuffer;
+    zoomed_dataset = zoomBuffer;
+    zoomed_labels = labelBuffer;
+  }
+  if (COMPLETE_dataset.length >= 10) {
+    if (delta > 0 && can_zoom) {
+      if (zoomed_dataset.length >= 4) {
+        tracking_dataset_head.push(zoomed_dataset.shift()); // put head val in "cache"
+        tracking_dataset_head_lab.push(zoomed_labels.shift()); // put head label in "cache"
+        tracking_dataset_tail.push(zoomed_dataset.pop()); // put tail val in "cache"
+        tracking_dataset_tail_lab.push(zoomed_labels.pop()); // put tail label in "cache"
+      }
+      can_zoom = false;
+    }
+    if (delta < 0 && can_zoom) {
+      if (zoomed_dataset.length < graphBuffer.length) {
+        zoomed_dataset.unshift(tracking_dataset_head.pop());
+        zoomed_labels.unshift(tracking_dataset_head_lab.pop());
+        zoomed_dataset.push(tracking_dataset_tail.pop());
+        zoomed_labels.push(tracking_dataset_tail_lab.pop());
+      }
+      can_zoom = false;
+    }
+    for (var i = 0; i < COMPLETE_dataset.length; i++) {
+      graph_obj.data.datasets[0].data.shift();
+      graph_obj.data.labels.shift();
+    }
+
+    for (var l = 0; l < zoomed_dataset.length; l++) {
+      graph_obj.data.datasets[0].data.push(zoomed_dataset[l]);
+      graph_obj.data.labels.push(zoomed_labels[l]);
+      graph_obj.update();
+    }
+    can_zoom = true;
+  }
+}
+
+function getChartLength(chart) {
+  console.log(chart.chart.data.datasets[0]);
+  var l = chart.chart.data.datasets[0].data.length;
+  console.log("llll " + l);
+  return l;
+}

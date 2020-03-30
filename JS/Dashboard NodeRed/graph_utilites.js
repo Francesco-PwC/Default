@@ -219,7 +219,7 @@ var first_z = false;
 
 var container_grafico = document.getElementById("containerHeart");
 
-function Scroll(graph, max_length) {
+function Scroll(graph, max_length, chart) {
   graph.addEventListener("wheel", (event) => {
     delta = Math.sign(event.deltaY);
     if (delta > 0) {
@@ -234,7 +234,7 @@ function Scroll(graph, max_length) {
         is_zoomable = false;
       }
       if (is_zoomable && zoom_in < Math.floor(max_length / 2)) {
-        zoomGraph(heartChart, delta, zoom_in);
+        zoomGraph(chart, delta, zoom_in);
         zoom_in++;
         zoom_out = 0;
       }
@@ -251,7 +251,7 @@ function Scroll(graph, max_length) {
         is_zoomable = false;
       }
       if (is_zoomable && zoom_out <= 0) {
-        zoomGraph(heartChart, delta, zoom_out);
+        zoomGraph(chart, delta, zoom_out);
         console.log("zoom_out");
         zoom_out++;
         zoom_in = 0;

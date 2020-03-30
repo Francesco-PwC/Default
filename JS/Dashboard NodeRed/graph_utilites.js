@@ -251,7 +251,7 @@ function Scroll(graph, max_length, chart) {
       }
       if (is_zoomable && zoom_out <= 0) {
         zoomGraph(chart, delta, zoom_out);
-        console.log("zoom_out");
+        console.log
         zoom_out++;
         zoom_in = 0;
       }
@@ -298,11 +298,11 @@ function zoomGraph(graph_obj, delta, index) {
   var COMPLETE_labels;
   var zoomed_dataset;
   var zoomed_labels;
-    console.log("delta: "+delta);
+  console.log("graph_obj.data: "+graph_obj.data);
   if (is_ready === 0) {
     is_ready++;
     full_info_dataset = graph_obj.data;
-    console.log(full_info_dataset);
+    console.log("full info dataset: "+full_info_dataset);
     COMPLETE_dataset = full_info_dataset.datasets[0].data.slice(0);
     COMPLETE_labels = full_info_dataset.labels.slice(0);
     graphBuffer = COMPLETE_dataset;
@@ -317,6 +317,10 @@ function zoomGraph(graph_obj, delta, index) {
     zoomed_labels = labelBuffer;
   }
   if (COMPLETE_dataset.length >= 10) {
+    for (var i = 0; i < COMPLETE_dataset.length; i++) {
+      graph_obj.data.datasets[0].data.shift();
+      graph_obj.data.labels.shift();
+    }
     if (delta > 0 && can_zoom) {
       if (zoomed_dataset.length >= 4) {
         tracking_dataset_head.push(zoomed_dataset.shift()); // put head val in "cache"
@@ -335,11 +339,6 @@ function zoomGraph(graph_obj, delta, index) {
       }
       can_zoom = false;
     }
-    for (var i = 0; i < COMPLETE_dataset.length; i++) {
-      graph_obj.data.datasets[0].data.shift();
-      graph_obj.data.labels.shift();
-    }
-
     for (var l = 0; l < zoomed_dataset.length; l++) {
       graph_obj.data.datasets[0].data.push(zoomed_dataset[l]);
       graph_obj.data.labels.push(zoomed_labels[l]);
@@ -350,8 +349,6 @@ function zoomGraph(graph_obj, delta, index) {
 }
 
 function getChartLength(chart) {
-  console.log(chart.chart.data.datasets[0]);
   var l = chart.chart.data.datasets[0].data.length;
-  console.log("llll " + l);
   return l;
 }

@@ -317,10 +317,6 @@ function zoomGraph(graph_obj, delta, index) {
     zoomed_labels = labelBuffer;
   }
   if (COMPLETE_dataset.length >= 10) {
-    for (var i = 0; i < COMPLETE_dataset.length; i++) {
-      graph_obj.data.datasets[0].data.shift();
-      graph_obj.data.labels.shift();
-    }
     if (delta > 0 && can_zoom) {
       if (zoomed_dataset.length >= 4) {
         tracking_dataset_head.push(zoomed_dataset.shift()); // put head val in "cache"
@@ -338,6 +334,11 @@ function zoomGraph(graph_obj, delta, index) {
         zoomed_labels.push(tracking_dataset_tail_lab.pop());
       }
       can_zoom = false;
+    }
+    for (var i = 0; i < COMPLETE_dataset.length; i++) {
+      var x = graph_obj.data.datasets[0].data.shift();
+      var y = graph_obj.data.labels.shift();
+      console.log("deleted: "+y);
     }
     for (var l = 0; l < zoomed_dataset.length; l++) {
       graph_obj.data.datasets[0].data.push(zoomed_dataset[l]);

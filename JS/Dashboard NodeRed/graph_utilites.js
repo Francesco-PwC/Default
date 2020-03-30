@@ -256,7 +256,6 @@ function scroll(graph, max_length, chart) {
         zoom_in = 0;
       }
     }
-
     event.preventDefault();
   });
 }
@@ -336,6 +335,7 @@ function zoomGraph(graph_obj, delta, index) {
       can_zoom = false;
     }
     for (var i = 0; i < COMPLETE_dataset.length; i++) {
+      console.log(graph_obj);
       var x = graph_obj.data.datasets[0].data.shift();
       var y = graph_obj.data.labels.shift();
       console.log("deleted: "+y);

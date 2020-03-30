@@ -218,6 +218,7 @@ var is_zoomable = false;
 var first_z = false;
 
 function Scroll(graph, max_length, chart) {
+  console.log("CHART: "+chart);
   graph.addEventListener("wheel", (event) => {
     delta = Math.sign(event.deltaY);
     if (delta > 0) {
@@ -292,6 +293,7 @@ function zoomGraph(graph_obj, delta, index) {
   if (delta > 0 && is_ready === 0) {
     is_ready++;
     full_info_dataset = graph_obj.data;
+    console.log(full_info_dataset);
     COMPLETE_dataset = full_info_dataset.datasets[0].data.slice(0);
     COMPLETE_labels = full_info_dataset.labels.slice(0);
     graphBuffer = COMPLETE_dataset;

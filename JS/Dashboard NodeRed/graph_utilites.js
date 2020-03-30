@@ -299,7 +299,7 @@ function zoomGraph(graph_obj, delta, index) {
   var zoomed_dataset;
   var zoomed_labels;
     console.log("delta: "+delta);
-  if (delta > 0 && is_ready === 0) {
+  if (is_ready === 0) {
     is_ready++;
     full_info_dataset = graph_obj.data;
     console.log(full_info_dataset);

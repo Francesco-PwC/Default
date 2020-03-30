@@ -217,7 +217,7 @@ var zoom_out = 0;
 var is_zoomable = false;
 var first_z = false;
 
-function Scroll(graph, max_length, chart) {
+function scroll(graph, max_length, chart) {
   console.log("CHART: "+chart);
   graph.addEventListener("wheel", (event) => {
     delta = Math.sign(event.deltaY);

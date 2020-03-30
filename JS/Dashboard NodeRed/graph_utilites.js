@@ -34,14 +34,14 @@ function addData(chart, label, d, index, type) {
         var input = dataset.data;
         //debug
         if (type === "heartrate"){
-            console.log("HEARTRATE:");
-            console.log(input);
-            console.log(pointBackgroundColors);
+            //console.log("HEARTRATE:");
+            //console.log(input);
+            //console.log(pointBackgroundColors);
         }
         
         if (type === "altitude"){
-            console.log("ALTITUDE:");
-            console.log(input);
+            //console.log("ALTITUDE:");
+            //console.log(input);
             dataset.backgroundColor = gradient;
             dataset.hoverBackgroundColor = "rgba(0,212,255,0.2)";
             dataset.borderColor = ("transparent");
@@ -49,7 +49,7 @@ function addData(chart, label, d, index, type) {
         if (type === "heartrate"){
             chart.config.data.datasets[0].backgroundColor = gradientHE;
             //chart.config.data.datasets[0]["pointBackgroundColor"] = 'rgba(70,102,255, 1)';
-            console.log("dataset: "+ dataset.data[0].pointBackgroundColor);
+            //console.log("dataset: "+ dataset.data[0].pointBackgroundColor);
             if (typeof min !== 'undefined' && typeof max !== 'undefined'){
                 if (dat >= min && dat <= max) {
                     console.log("normal value: "+dat);
@@ -71,10 +71,10 @@ function addData(chart, label, d, index, type) {
             }
         }
         if (type === "roundPerMinute"){
-            console.log("RPM - dataset: "+dataset);
-            console.log("RPM - dataset.data: "+dataset.data);
-            console.log("RPM - dasets[0].data: "+chart.config.data.datasets[0].data);
-            console.log("RPM - dataset: "+dataset[0])
+            //console.log("RPM - dataset: "+dataset);
+            //console.log("RPM - dataset.data: "+dataset.data);
+            //console.log("RPM - dasets[0].data: "+chart.config.data.datasets[0].data);
+            //console.log("RPM - dataset: "+dataset[0])
             //chart.config.data.datasets[0].pointBackgroundColor ="rgba(255,255,255,1)";
         }
     });
@@ -290,6 +290,7 @@ var tracking_dataset_tail_lab = [];
 
 function zoomGraph(graph_obj, delta, index) {
   var full_info_dataset, COMPLETE_dataset, COMPLETE_labels, zoomed_dataset, zoomed_labels;
+    console.log(graph_obj);
   if (delta > 0 && is_ready === 0) {
     is_ready++;
     full_info_dataset = graph_obj.data;

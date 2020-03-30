@@ -281,16 +281,24 @@ function increaseBar(incr_val, diff, max_l) {
   return incr;
 }
 
-var graphBuffer, labelBuffer, zoomBuffer, can_zoom, counter_heart_T;
+var graphBuffer;
+var labelBuffer;
+var zoomBuffer;
+var can_zoom;
 var is_ready = 0;
 var tracking_dataset_head = [];
 var tracking_dataset_head_lab = [];
 var tracking_dataset_tail = [];
 var tracking_dataset_tail_lab = [];
+var counter_heart_T;
 
 function zoomGraph(graph_obj, delta, index) {
-  var full_info_dataset, COMPLETE_dataset, COMPLETE_labels, zoomed_dataset, zoomed_labels;
-    console.log(graph_obj);
+  var full_info_dataset;
+  var COMPLETE_dataset;
+  var COMPLETE_labels;
+  var zoomed_dataset;
+  var zoomed_labels;
+    console.log("delta: "+delta);
   if (delta > 0 && is_ready === 0) {
     is_ready++;
     full_info_dataset = graph_obj.data;

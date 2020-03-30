@@ -113,5 +113,5 @@ var id_select = document.getElementById('smartwatch_ids');
 var ref_select = document.getElementById('refresh_times');
 var containerH = document.getElementById('containerHeart');
 //updateGraphOnScroll(ctx_H, myChart_HEART, id_select, ref_select, 0);
-Scroll(containerH, getChartLength(myChart_HEART));
+Scroll(containerH, getChartLength(myChart_HEART), myChart_HEART);
 

@@ -142,12 +142,13 @@ function deleteOptionalOnHide(element_list){
       if (i < 3){
         var deleted = element_list[i].parentNode.removeChild(element_list[i]);
         console.log("Deleted: "+deleted);
-      }
-      //element_list[i].parentNode.removeChild(element_list[i]);
-    } else {
+      } 
+      else {
         var deleted = element_list[i].parentNode.parentNode.removeChild(element_list[i]);
         console.log("Deleted: "+deleted);
-    }
+      }
+      //element_list[i].parentNode.removeChild(element_list[i]);
+    } 
     console.log("deletable");
     optional_values = []
     deletable = false;

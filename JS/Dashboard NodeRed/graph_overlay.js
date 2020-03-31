@@ -97,27 +97,44 @@ function createPopUpContent(overlay, value_list){
     optional_values.push(div_not);
   }
   //se non metto === 0, da indietro false sul check di esistenza se il valore è uguale a 0
-  var div_thres = document.createElement("div");
-  div_thres.className = "row threshold_overlay";
-  if (value_list.min_thres === 0 || value_list.min_thres){
-    console.log("MIN THRES; "+value_list.min_thres);
-    var p_min = document.createElement("p");
-    var min_t = document.createTextNode(value_list.min_thres);
-    p_min.className = "col-sm-6 col-md-6 col-lg-6 min_threshold_overlay_text";
-    p_min.append(min_t);
-    div_thres.append(p_min);
-    overlay.append(div_thres);
-    optional_values.push(div_thres);
-  }
-  if (value_list.max_thres === 0 || value_list.max_thres){
-    var p_max  = document.createElement('p');
-    var max_t = document.createTextNode(value_list.max_thres);
-    p_max.className = "col-sm-6 col-md-6 col-lg-6 max_threshold_overlay_text";
-    p_max.append(max_t);
-    div_thres.append(p_max);
-    overlay.append(div_thres);
-    optional_values.push(p_max);
-  }
+  //@TODO Clean and simplify - works fine for tests
+  if ((value_list.min_thres === 0 || value_list.min_thres) || 
+     (value_list.max_thres === 0 || value_list.max_thres) || 
+     ((value_list.min_thres === 0 || value_list.min_thres) && (value_list.max_thres === 0 || value_list.max_thres))){
+      var div_thres = document.createElement("div");
+      div_thres.className = "row threshold_overlay";
+      if ((value_list.min_thres === 0 || value_list.min_thres) && (value_list.max_thres === 0 || value_list.max_thres)){
+        var p_min = document.createElement("p");
+        var min_t = document.createTextNode(value_list.min_thres);
+        var p_max  = document.createElement('p');
+        var max_t = document.createTextNode(value_list.max_thres);
+        p_min.className = "col-sm-6 col-md-6 col-lg-6 min_threshold_overlay_text";
+        p_max.className = "col-sm-6 col-md-6 col-lg-6 max_threshold_overlay_text";
+        p_min.append(min_t);
+        div_thres.append(p_min);
+        div_thres.append(p_max);
+        overlay.append(div_thres);
+      }
+      else if (value_list.min_thres === 0 || value_list.min_thres){
+        console.log("MIN THRES; "+value_list.min_thres);
+        var p_min = document.createElement("p");
+        var min_t = document.createTextNode(value_list.min_thres);
+        p_min.className = "col-sm-6 col-md-6 col-lg-6 min_threshold_overlay_text";
+        p_min.append(min_t);
+        div_thres.append(p_min);
+        overlay.append(div_thres);
+        optional_values.push(div_thres);
+      }
+      else if (value_list.max_thres === 0 || value_list.max_thres){
+        var p_max  = document.createElement('p');
+        var max_t = document.createTextNode(value_list.max_thres);
+        p_max.className = "col-sm-6 col-md-6 col-lg-6 max_threshold_overlay_text";
+        p_max.append(max_t);
+        div_thres.append(p_max);
+        overlay.append(div_thres);
+        optional_values.push(div_thres);
+      }
+    }
 }
 
 var deletable = false;
@@ -139,14 +156,17 @@ function hidePopUp(overlay_ref){
 function deleteOptionalOnHide(element_list){
   if(deletable){
     for (var i = 0; i < element_list.length;i++){
+      var deleted = element_list[i].parentNode.removeChild(element_list[i]);
+      console.log("Deleted: "+deleted);
+        /*
       if (i < 3){
         var deleted = element_list[i].parentNode.removeChild(element_list[i]);
         console.log("Deleted: "+deleted);
-      } 
-      else {
+      } */
+      /*else {
         var deleted = element_list[i].parentNode.parentNode.removeChild(element_list[i]);
         console.log("Deleted: "+deleted);
-      }
+      }*/
       //element_list[i].parentNode.removeChild(element_list[i]);
     } 
     console.log("deletable");

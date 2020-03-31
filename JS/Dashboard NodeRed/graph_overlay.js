@@ -154,4 +154,4 @@ function deleteOptionalOnHide(element_list){
 var ref_cont = document.getElementById("containerHeart");
 var ref_canva = document.getElementById("heartChart");
 var ref_over = ref_cont.getElementsByClassName("graph_overlay")[0];
-getPointOnclick(ref_canva,heartChart,ref_over);
+getPointOnclick(ref_canva,myChart_HEART,ref_over);

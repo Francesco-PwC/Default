@@ -139,9 +139,14 @@ function hidePopUp(overlay_ref){
 function deleteOptionalOnHide(element_list){
   if(deletable){
     for (var i = 0; i < element_list.length;i++){
-      var deleted = element_list[i].parentNode.removeChild(element_list[i])
-      console.log("Deleted: "+deleted);
+      if (i < 3){
+        var deleted = element_list[i].parentNode.removeChild(element_list[i]);
+        console.log("Deleted: "+deleted);
+      }
       //element_list[i].parentNode.removeChild(element_list[i]);
+    } else {
+        var deleted = element_list[i].parentNode.parentNode.removeChild(element_list[i]);
+        console.log("Deleted: "+deleted);
     }
     console.log("deletable");
     optional_values = []

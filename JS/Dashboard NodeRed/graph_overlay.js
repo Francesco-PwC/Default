@@ -53,7 +53,7 @@ function getPointOnclick(chart_canvas, chart, ref_overlay){
     }
 }
 
-var margin_top = 3;
+var margin_top = 8;
 function showPopUp(chart_canvas, ref_overlay, popup_values_list){
     createPopUpContent(ref_overlay, popup_values_list);
     console.log("popup created");

@@ -181,5 +181,5 @@ var ref_cont = document.getElementById("containerHeart");
 var ref_canva = document.getElementById("heartChart");
 var ref_over = ref_cont.getElementsByClassName("graph_overlay")[0];
 setTimeout( function(){
-  getPointOnclick(ref_canva,myChart_HEART,ref_over),2000);
-});
+  getPointOnclick(ref_canva,myChart_HEART,ref_over);
+},2000);

@@ -79,8 +79,8 @@ function createPopUpContent(overlay, value_list){
   var value = overlay.getElementsByClassName('overlay_value')[0];
   var tits = overlay.parentNode.getElementsByClassName('overlay_tit')[0];
   tits.innerHTML = value_list.title;
-  label.innerHTML = value_list.label;
-  value.innerHTML = value_list.value;
+  label.innerHTML = "Timestamp:"+"<br/>"+value_list.label;
+  value.innerHTML = "Value:"+"<br/>"+value_list.value;
   if(typeof optional_values !== "undefined"){
     deleteOptionalOnHide(optional_values);
   }

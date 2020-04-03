@@ -84,7 +84,6 @@ function createPopUpContent(overlay, value_list){
   if(typeof optional_values !== "undefined"){
     deleteOptionalOnHide(optional_values);
   }
-  console.log(" @@@@@@@@@@ "+value_list.min_thres);
   if(value_list.notify){
     var div_not = document.createElement("div");
     div_not.className = "row notify_overlay";
@@ -163,7 +162,8 @@ function deleteOptionalOnHide(element_list){
         var deleted = element_list[i].parentNode.removeChild(element_list[i]);
         console.log("Deleted: "+deleted);
       } */
-      /*else {
+      /*
+      else {
         var deleted = element_list[i].parentNode.parentNode.removeChild(element_list[i]);
         console.log("Deleted: "+deleted);
       }*/

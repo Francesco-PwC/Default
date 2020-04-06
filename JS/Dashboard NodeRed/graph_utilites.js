@@ -54,7 +54,7 @@ function addData(chart, label, d, index, type) {
             if (typeof min !== 'undefined' && typeof max !== 'undefined'){
                 if (dat >= min && dat <= max) {
                     console.log("normal value: "+dat);
-                    pointBackgroundColors.push("transparent");
+                    pointBackgroundColors.push("rgba(121,9,115,0.7)");
                 }
                 if (dat > max){
                     console.log(dat+ " > " +max);

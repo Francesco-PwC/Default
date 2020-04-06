@@ -15,10 +15,10 @@ gradientHE.addColorStop(0, "rgba(0,212,255,0.1)");
 gradientHE.addColorStop(0.53, "rgba(121,9,115,0.1)");
 gradientHE.addColorStop(1, "rgba(19,19,19,0.1)");
 */
-var gradientHE = cont_HE.createLinearGradient(0, 0, 0, 500);
-gradientHE.addColorStop(0, "rgba(120,0,124,0.5)");   
+var gradientHE = cont_HE.createLinearGradient(0, 0, 0, 500);  
+gradientHE.addColorStop(0, "rgba(244,0,255,0.9)");
 gradientHE.addColorStop(0.6, "rgba(255,0,241,0.7)");
-gradientHE.addColorStop(1, "rgba(244,0,255,0.9)");
+gradientHE.addColorStop(1, "rgba(120,0,124,0.5)"); 
 
 myChart_HEART = new Chart(ctx_H, {
     type: 'line',
@@ -68,11 +68,16 @@ var gradient = cont_ALT.createLinearGradient(0, 0, 0, 500);
 gradient.addColorStop(0, "rgba(0,212,255,0.1)");   
 gradient.addColorStop(0.63, "rgba(121,9,115,0.1)");
 gradient.addColorStop(1, "rgba(19,19,19,0.1)");
-
+/*
 var gradientAH = cont_ALT.createLinearGradient(0, 0, 0, 200);
 gradientAH.addColorStop(0, "rgba(0,212,255,0.5)");   
 gradientAH.addColorStop(0.53, "rgba(121,9,115,0.4)");
 gradientAH.addColorStop(1, "rgba(19,19,19,0.4)");
+*/
+var gradientAH = cont_ALT.createLinearGradient(0, 0, 0, 200);  
+gradientAH.addColorStop(0, "rgba(244,0,255,0.9)");
+gradientAH.addColorStop(0.6, "rgba(255,0,241,0.7)");
+gradientAH.addColorStop(1, "rgba(120,0,124,0.5)"); 
 
 var gradient_ALT_BORDER = cont_ALT.createLinearGradient(0, 0, 0, 200);
 gradient.addColorStop(0, "rgba(0,212,255,1)");   

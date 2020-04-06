@@ -22,7 +22,7 @@ myChart_HEART = new Chart(ctx_H, {
             data: [0],
             backgroundColor: gradientHE,
             borderColor: [
-                'rgba(70,102,255, 0.7)'
+                'rgba(255,110,199,1)'//'rgba(70,102,255, 0.7)'
             ],
             borderWidth: 1,
             pointBackgroundColor: pointBackgroundColors

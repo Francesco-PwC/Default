@@ -42,7 +42,7 @@ function addData(chart, label, d, index, type) {
         if (type === "altitude"){
             //console.log("ALTITUDE:");
             //console.log(input);
-            dataset.backgroundColor = gradient;
+            dataset.backgroundColor = gradientAH;
             dataset.hoverBackgroundColor = "rgba(0,212,255,0.2)";
             dataset.borderColor = ("transparent");
         }

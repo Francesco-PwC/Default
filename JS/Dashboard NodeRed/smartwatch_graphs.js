@@ -9,10 +9,16 @@ var myChart_HEART;
 var ctx_H = document.getElementById('heartChart');
 
 cont_HE = ctx_H.getContext("2d");
+/*
 var gradientHE = cont_HE.createLinearGradient(0, 0, 0, 500);
 gradientHE.addColorStop(0, "rgba(0,212,255,0.1)");   
 gradientHE.addColorStop(0.53, "rgba(121,9,115,0.1)");
 gradientHE.addColorStop(1, "rgba(19,19,19,0.1)");
+*/
+var gradientHE = cont_HE.createLinearGradient(0, 0, 0, 500);
+gradientHE.addColorStop(0, "rgba(120,0,124,0.5)");   
+gradientHE.addColorStop(0.6, "rgba(255,0,241,0.7)");
+gradientHE.addColorStop(1, "rgba(244,0,255,0.9)");
 
 myChart_HEART = new Chart(ctx_H, {
     type: 'line',

@@ -1,7 +1,14 @@
 /*
 *   BPM GRAPH
 */
-
+/*
+GESTIONE SHADOW E STILE SINGOLI PUNTI DEL GRAFICO
+myChart_ALT.controller.ctx.shadowColor = "rgba(0,0,0,0)";
+myChart_ALT.controller.ctx.shadowBlur = 25;
+myChart_ALT.controller.ctx.shadowOffsetX = 5;
+myChart_ALT.controller.ctx.shadowOffsetY = 5;
+myChart_ALT.controller.ctx.transform = "rotate(90deg)";
+*/
 //To manage different colors
 var pointBackgroundColors = ["transparent"];
 

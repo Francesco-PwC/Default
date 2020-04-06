@@ -54,13 +54,13 @@ function addData(chart, label, d, index, type) {
             if (typeof min !== 'undefined' && typeof max !== 'undefined'){
                 if (dat >= min && dat <= max) {
                     console.log("normal value: "+dat);
-                    pointBackgroundColors.push("rgba(121,9,115,0.7)");
+                    pointBackgroundColors.push("rgba(255,110,199,1)");
                 }
                 if (dat > max){
                     console.log(dat+ " > " +max);
                     //input.pointBackgroundColor = 'red';
                     //chart.config.data.datasets[0].data.radius = '5';
-                    pointBackgroundColors.push("red");
+                    pointBackgroundColors.push("rgba(255,110,199,1)");
                 } 
                 if (dat < min) {
                     console.log(dat+ " < " +max);

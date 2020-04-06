@@ -3,7 +3,7 @@
 */
 
 //To manage different colors
-var pointBackgroundColors = ["transparent"];
+var pointBackgroundColors = ["rgba(121,9,115,0.7)"];
 
 var myChart_HEART;
 var ctx_H = document.getElementById('heartChart');

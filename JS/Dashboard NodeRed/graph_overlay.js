@@ -66,7 +66,7 @@ function showPopUp(chart_canvas, ref_overlay, popup_values_list){
     overlay.style.width = chart_canvas.style.width;
     overlay.style.height = chart_canvas.style.height;
     overlay.style.visibility = "visible";
-    overlay.style.top = getRelativePosition(chart_canvas) + margin_top +"%";
+    overlay.style.top = margin_top +"%";
     //overlay.getElementsByClassName("close")[0].onclick = ;
     //chart_canvas.parentNode.append(overlay);
 }

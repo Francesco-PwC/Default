@@ -139,7 +139,6 @@ myChart_ALT = new Chart(ctx_ALT, {
         scales: {
             xAxes: [{
                 ticks: {
-                    type: 'category',
                     max: 20,
                     min: 15,
                     stepSize: 1,

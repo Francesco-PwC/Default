@@ -112,26 +112,26 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     let top_lim = storical_time;
     switch(top_lim){
         case(30):
-            top_lim = 4;
+            top_limit = 4;
             break;
         case(60):
-            top_lim = 6;
+            top_limit = 6;
             break;
         case(300):
-            top_lim = 30 + addable_values;
+            top_limit = 30 + addable_values;
             break;
         case(600):
-            top_lim = 60 + addable_values;
+            top_limit = 60 + addable_values;
             break;
         case(1800):
-            top_lim = 180 + addable_values;
+            top_limit = 180 + addable_values;
             break;
         case(3600):
             //top_lim = 300 + addable_values;
-            top_lim = 60 + addable_values;
+            top_limit = 60 + addable_values;
             break;
     }
-    top_limit = top_lim;
+    //top_limit = top_lim;
     addData(graph,times,value,counter,type, notify);
 }
 /*

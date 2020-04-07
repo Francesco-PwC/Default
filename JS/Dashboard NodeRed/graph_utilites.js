@@ -110,6 +110,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     //Storical graph Limits
     var addable_values = 10;
     let top_lim = storical_time;
+    console.log(top_lim);
     switch(top_lim){
         case(30):
             top_limit = 4;

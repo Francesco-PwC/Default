@@ -1,4 +1,4 @@
-var top_limit;
+var top_limit = 0;
 //ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
 var addable_values = 0;
 function addData(chart, label, d, index, type, notify) {
@@ -110,29 +110,30 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     //Storical graph Limits
     var addable_values = 10;
     let top_lim = storical_time;
+    var t = 0;
     console.log(top_lim);
     switch(top_lim){
         case(30):
-            top_limit = 4;
+            t = 4;
             break;
         case(60):
-            top_limit = 6;
+            t = 6;
             break;
         case(300):
-            top_limit = 30 + addable_values;
+            t = 30 + addable_values;
             break;
         case(600):
-            top_limit = 60 + addable_values;
+            t = 60 + addable_values;
             break;
         case(1800):
-            top_limit = 180 + addable_values;
+            t = 180 + addable_values;
             break;
         case(3600):
             //top_lim = 300 + addable_values;
-            top_limit = 60 + addable_values;
+            t = 60 + addable_values;
             break;
     }
-    //top_limit = top_lim;
+    top_limit = t;
     addData(graph,times,value,counter,type, notify);
 }
 /*

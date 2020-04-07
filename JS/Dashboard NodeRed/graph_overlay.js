@@ -1,7 +1,7 @@
 //SWITCH SIMULATION NODERED
 var MESSAGGIO_NODERED_Punto_notify = true;
 var MESSAGGIO_NODERED_Punto_min_thres = false;
-var MESSAGGIO_NODERED_Punto_max_thres = true;
+var MESSAGGIO_NODERED_Punto_max_thres = false;
 
 
 function getPointOnclick(chart_canvas, chart, ref_overlay){

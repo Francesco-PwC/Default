@@ -45,13 +45,16 @@ myChart_HEART = new Chart(ctx_H, {
     options: {
         tooltips: {
             callbacks: {
+                title: function(tooltipItem,data){
+                    var title = data.datasets[tooltipItem.datasetIndex].label || '';
+                    return title;
+                },
                 label: function(tooltipItem, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || '';
                     if (label) {
                         label += ': ';
                     }
                     label += Math.round(tooltipItem.yLabel * 100) / 100;
-                    label += tooltipItem.xLabel;
                     return label;
                 }
             }
@@ -133,7 +136,6 @@ myChart_ALT = new Chart(ctx_ALT, {
                         label += ': ';
                     }
                     label += Math.round(tooltipItem.yLabel * 100) / 100;
-                    label += tooltipItem.xLabel;
                     return label;
                 }
             }

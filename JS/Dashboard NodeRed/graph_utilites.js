@@ -2,8 +2,10 @@ var top_limit;
 //ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
 var addable_values = 0;
 function addData(chart, label, d, index, type, notify) {
-    var l  = label.substring(22,24); 
-    chart.data.labels.push(l);
+    //label seconds
+    //var l  = label.substring(22,24); 
+    
+    chart.data.labels.push(label);
     var dat = parseInt(d);
     if (typeof notify == 'undefined' || notify == '' || notify == null){
         notify = "No relevant actions";

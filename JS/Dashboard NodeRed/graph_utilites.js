@@ -1,7 +1,7 @@
 var top_limit;
 //ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
 var addable_values = 0;
-function addData(chart, label, d, index, type) {
+function addData(chart, label, d, index, type, notify) {
     chart.data.labels.push(label);
     var dat = parseInt(d);
     if (typeof notify == 'undefined' || notify == '' || notify == null){
@@ -101,7 +101,7 @@ function removeData(chart, t){
 function refreshGraphRoutineByType(graph, times, value, type, counter){
     addData(graph,times,value,counter, type);
 }
-function refreshGraphRoutineByType(graph, times, value, type, counter, storical_time){
+function refreshGraphRoutineByType(graph, times, value, type, counter, storical_time, notify){
     //Storical graph Limits
     var addable_values = 10;
     let top_lim = storical_time;
@@ -126,7 +126,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
             break;
     }
     top_limit = top_lim;
-    addData(graph,times,value,counter,type);
+    addData(graph,times,value,counter,type, notify);
 }
 /*
 const max_zoom = 10;

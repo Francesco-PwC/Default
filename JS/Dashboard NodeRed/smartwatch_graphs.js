@@ -108,7 +108,7 @@ gradientAH.addColorStop(1, "rgba(120,0,124,0.5)");
 */
 var gradientAH = cont_ALT.createLinearGradient(0, 0, 0, 200);  
 gradientAH.addColorStop(0, "rgba(146,255,0,0.9)");
-gradientAH.addColorStop(0.6, "rgba(255,46,70,0.7)");
+gradientAH.addColorStop(0.6, "rgba(0,255,40,0.7)");
 gradientAH.addColorStop(1, "rgba(77,124,0,0.5)");
 
 var gradient_ALT_BORDER = cont_ALT.createLinearGradient(0, 0, 0, 200);

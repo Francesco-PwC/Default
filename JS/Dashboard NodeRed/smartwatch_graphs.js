@@ -132,6 +132,7 @@ myChart_ALT = new Chart(ctx_ALT, {
                         label += ': ';
                     }
                     label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    label += tooltipItem.xLabel;
                     return label;
                 }
             }

@@ -1,4 +1,4 @@
-var top_limit;
+var top_limit = 0;
 //ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
 var addable_values = 0;
 function addData(chart, label, d, index, type, notify) {

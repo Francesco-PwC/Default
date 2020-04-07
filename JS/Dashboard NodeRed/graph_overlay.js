@@ -89,7 +89,7 @@ function createPopUpContent(overlay, value_list){
     var div_not = document.createElement("div");
     div_not.className = "row notify_overlay";
     var p_not = document.createElement("p");
-    var not_t = document.createTextNode(value_list.notify);
+    var not_t = document.createTextNode("Notify:"+"<br/>"+value_list.notify);
     p_not.className = "col-sm-12 col-md-12 col-lg-12 notify";
     p_not.append(not_t);
     div_not.append(p_not)

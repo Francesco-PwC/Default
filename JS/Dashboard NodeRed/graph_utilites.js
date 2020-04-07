@@ -90,6 +90,7 @@ function removeData(chart, t){
     //var meta = myChart.getDatasetMeta(0);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.shift();
+        console.log(dataset.notifies);
         dataset.notifies.shift();
         if (t === "heartrate"){
             pointBackgroundColors.shift();

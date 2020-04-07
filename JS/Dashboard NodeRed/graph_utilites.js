@@ -70,7 +70,7 @@ function addData(chart, label, d, index, type, notify) {
                 } 
                 if (dat < min) {
                     console.log(dat+ " < " +max);
-                    pointBackgroundColors.push("red");
+                    pointBackgroundColors.push("rgba(255,110,199,1)");
                     //chart.config.data.datasets[0]['pointBackgroundColor'][0] = 'green';
                     //chart.config.data.datasets[0].radius = '5';
                     //dataset.pointBackgroundColor = "green";

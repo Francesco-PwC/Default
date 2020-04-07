@@ -43,6 +43,14 @@ myChart_HEART = new Chart(ctx_H, {
         }]
     },
     options: {
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    return label;
+                }
+            }
+        },
         scales: {
             xAxes: 
             [{
@@ -109,6 +117,14 @@ myChart_ALT = new Chart(ctx_ALT, {
         }]
     },
     options: {
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    return label;
+                }
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {

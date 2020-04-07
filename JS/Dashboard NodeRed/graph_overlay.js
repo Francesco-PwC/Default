@@ -19,7 +19,7 @@ function getPointOnclick(chart_canvas, chart, ref_overlay){
         var clickedElementindex = activePoints[0]._index;
         var label = chart.data.labels[clickedElementindex];
         var value = chart.data.datasets[clickedDatasetIndex].data[clickedElementindex];
-        var notify = chart.data.datasets[clickedDatasetIndex].notify[clickedElementindex];
+        var notify = chart.data.datasets[clickedDatasetIndex].notifies[clickedElementindex];
         var possible_rows = 5;
         var popup_values = []; 
         var index_popup_values = 0;

@@ -32,6 +32,7 @@ myChart_HEART = new Chart(ctx_H, {
     data: {
         datasets: [{
             label: 'Bpm',
+            notifies: [],
             data: [0],
             backgroundColor: gradientHE,
             borderColor: [

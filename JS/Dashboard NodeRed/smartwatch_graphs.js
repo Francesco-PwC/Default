@@ -66,7 +66,7 @@ myChart_HEART = new Chart(ctx_H, {
                     min: 0,
                     stepSize: 1,
                     callback: function(value) {
-                        return value.substr(22,24);//truncate on seconds
+                        return value.substr(19,21);//truncate on seconds
                     }
                 }
             }],
@@ -149,7 +149,7 @@ myChart_ALT = new Chart(ctx_ALT, {
                     min: 15,
                     stepSize: 1,
                     callback: function(value) {
-                        return value.substr(22,24);//truncate on seconds
+                        return value.substr(19,21);//truncate on seconds
                     }
                 }
             }],

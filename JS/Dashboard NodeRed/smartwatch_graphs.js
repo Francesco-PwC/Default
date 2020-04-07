@@ -33,7 +33,7 @@ myChart_HEART = new Chart(ctx_H, {
         datasets: [{
             label: 'Bpm',
             notifies: [],
-            data: [0],
+            data: [],
             backgroundColor: gradientHE,
             borderColor: [
                 'rgba(255,110,199,1)'//'rgba(70,102,255, 0.7)'
@@ -96,6 +96,7 @@ myChart_ALT = new Chart(ctx_ALT, {
     type: 'bar',
     data: {
         datasets: [{
+            notifies: [],
             categoryPercentage: 0.5,
             barPercentage: 0.5,
             barThickness: 1,

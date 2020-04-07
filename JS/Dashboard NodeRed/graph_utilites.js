@@ -102,10 +102,10 @@ function removeData(chart, t){
     });
     chart.update();
 }
-
+/*
 function refreshGraphRoutineByType(graph, times, value, type, counter){
     addData(graph,times,value,counter, type);
-}
+}*/
 function refreshGraphRoutineByType(graph, times, value, type, counter, storical_time, notify){
     //Storical graph Limits
     var addable_values = 10;

@@ -47,6 +47,10 @@ myChart_HEART = new Chart(ctx_H, {
             callbacks: {
                 label: function(tooltipItem, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
                     return label;
                 }
             }
@@ -124,6 +128,10 @@ myChart_ALT = new Chart(ctx_ALT, {
             callbacks: {
                 label: function(tooltipItem, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
                     return label;
                 }
             }
@@ -134,7 +142,10 @@ myChart_ALT = new Chart(ctx_ALT, {
                     type: 'category',
                     max: 20,
                     min: 15,
-                    stepSize: 1
+                    stepSize: 1,
+                    callback: function(value) {
+                        return value.substr(22,24);//truncate on seconds
+                    }
                 }
             }],
             yAxes: [{

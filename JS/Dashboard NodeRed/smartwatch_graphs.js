@@ -97,6 +97,7 @@ myChart_ALT = new Chart(ctx_ALT, {
     data: {
         datasets: [{
             notifies: [],
+            data: [],
             categoryPercentage: 0.5,
             barPercentage: 0.5,
             barThickness: 1,

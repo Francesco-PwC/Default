@@ -109,7 +109,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter){
 function refreshGraphRoutineByType(graph, times, value, type, counter, storical_time, notify){
     //Storical graph Limits
     var addable_values = 10;
-    let top_lim = storical_time;
+    /*let top_lim = storical_time;
     var t = 0;
     console.log(top_lim);
     switch(top_lim){
@@ -133,7 +133,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
             t = 60 + addable_values;
             break;
     }
-    top_limit = t;
+    top_limit = t;*/
     addData(graph,times,value,counter,type, notify);
 }
 /*

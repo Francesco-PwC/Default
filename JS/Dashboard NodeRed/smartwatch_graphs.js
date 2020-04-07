@@ -51,6 +51,7 @@ myChart_HEART = new Chart(ctx_H, {
                         label += ': ';
                     }
                     label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    label += tooltipItem.xLabel;
                     return label;
                 }
             }

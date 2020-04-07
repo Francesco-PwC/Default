@@ -126,7 +126,7 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
         case(1800):
             top_lim = 180 + addable_values;
             break;
-        case(3000):
+        case(3600):
             //top_lim = 300 + addable_values;
             top_lim = 60 + addable_values;
             break;

@@ -19,6 +19,7 @@ function addData(chart, label, d, index, type, notify) {
     }
     */
     if (index >= top_limit + addable_values){
+        console.log("index: "+index);
         removeData(chart,type);
     }
     //Graphs limits

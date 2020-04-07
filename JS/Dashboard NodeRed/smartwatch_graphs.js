@@ -47,7 +47,7 @@ myChart_HEART = new Chart(ctx_H, {
             callbacks: {
                 title: function(tooltipItem,data){
                     console.log(tooltipItem);
-                    return tooltipsLabel[tooltipItem[0].index];
+                    return data.labels[tooltipItem[0].index];
                 },
                 label: function(tooltipItem, data) {
                     var label = data.datasets[tooltipItem.datasetIndex].label || '';

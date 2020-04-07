@@ -46,7 +46,6 @@ myChart_HEART = new Chart(ctx_H, {
         tooltips: {
             callbacks: {
                 title: function(tooltipItem,data){
-                    console.log(tooltipItem);
                     return data.labels[tooltipItem[0].index];
                 },
                 label: function(tooltipItem, data) {
@@ -131,7 +130,6 @@ myChart_ALT = new Chart(ctx_ALT, {
         tooltips: {
             callbacks: {
                 title: function(tooltipItem,data){
-                    console.log(tooltipItem);
                     return data.labels[tooltipItem[0].index];
                 },
                 label: function(tooltipItem, data) {

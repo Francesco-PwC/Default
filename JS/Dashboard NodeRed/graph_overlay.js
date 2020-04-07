@@ -1,5 +1,5 @@
 //SWITCH SIMULATION NODERED
-var MESSAGGIO_NODERED_Punto_notify = false;
+var MESSAGGIO_NODERED_Punto_notify = true;
 var MESSAGGIO_NODERED_Punto_min_thres = false;
 var MESSAGGIO_NODERED_Punto_max_thres = true;
 
@@ -19,6 +19,7 @@ function getPointOnclick(chart_canvas, chart, ref_overlay){
         var clickedElementindex = activePoints[0]._index;
         var label = chart.data.labels[clickedElementindex];
         var value = chart.data.datasets[clickedDatasetIndex].data[clickedElementindex];
+        var notify = chart.data.datasets[clickedDatasetIndex].notify[clickedElementindex];
         var possible_rows = 5;
         var popup_values = []; 
         var index_popup_values = 0;
@@ -31,7 +32,7 @@ function getPointOnclick(chart_canvas, chart, ref_overlay){
         console.log(popup_values["value"]);
         
         if (MESSAGGIO_NODERED_Punto_notify){
-          notify = "notify text "+ NUMERO_CASUALE_A;
+          //notify = "notify text "+ NUMERO_CASUALE_A;
           console.log(notify);
           popup_values["notify"] = notify;
         }

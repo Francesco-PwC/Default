@@ -58,6 +58,9 @@ myChart_HEART = new Chart(ctx_H, {
                     max: 50,
                     min: 0,
                     stepSize: 1,
+                    callback: function(value) {
+                        return value.substr(22,24);//truncate on seconds
+                    }
                 }
             }],
             yAxes: 

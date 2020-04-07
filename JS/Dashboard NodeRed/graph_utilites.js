@@ -113,22 +113,22 @@ function refreshGraphRoutineByType(graph, times, value, type, counter, storical_
     var t = 0;
     console.log(top_lim);
     switch(top_lim){
-        case(30):
+        case 30:
             t = 4;
             break;
-        case(60):
+        case 60:
             t = 6;
             break;
-        case(300):
+        case 300:
             t = 30 + addable_values;
             break;
-        case(600):
+        case 600:
             t = 60 + addable_values;
             break;
-        case(1800):
+        case 1800:
             t = 180 + addable_values;
             break;
-        case(3600):
+        case 3600:
             //top_lim = 300 + addable_values;
             t = 60 + addable_values;
             break;

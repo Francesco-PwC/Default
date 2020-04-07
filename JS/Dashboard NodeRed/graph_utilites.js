@@ -2,7 +2,6 @@ var top_limit;
 //ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
 var addable_values = 0;
 function addData(chart, label, d, index, type) {
-    chart.data.notifies.push("NOTIFY_TEST");
     chart.data.labels.push(label);
     var dat = parseInt(d);
     
@@ -32,6 +31,7 @@ function addData(chart, label, d, index, type) {
     
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(dat);
+        dataset.notifies.push("TEST");
         var input = dataset.data;
         //debug
         if (type === "heartrate"){

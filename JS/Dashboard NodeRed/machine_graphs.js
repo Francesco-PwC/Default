@@ -12,7 +12,7 @@ myChart_RPM = new Chart(ctx, {
         datasets: [{
             label: 'Round per Minute',
 	    notifies: [],
-            data: [0],
+            data: [],
             backgroundColor: gradient_RPM,
             borderColor: [
                 'rgba(70,102,255, 1)'
@@ -110,7 +110,7 @@ myChart_MAC_T = new Chart(ctx_2, {
         datasets: [{
             label: 'Temperature',
 	    notifies: [],
-            data: [0],
+            data: [],
             backgroundColor: gradient_RPM,
             borderColor: [
                 'rgba(70,102,255, 1)'

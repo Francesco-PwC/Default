@@ -21,12 +21,30 @@ myChart_TEMP = new Chart(ctx_TEMP, {
         }]
     },
     options: {
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItem,data){
+                    return data.labels[tooltipItem[0].index];
+                },
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label;
+                }
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {
                     max: 10,
                     min: 0,
-                    stepSize: 1
+                    stepSize: 1,
+                    callback: function(value) {
+                        return value.substr(16,5);//truncate on seconds
+                    }
                 }
             }],
             yAxes: [{
@@ -60,12 +78,30 @@ myChart_HUM = new Chart(ctx_HUM, {
         }]
     },
     options: {
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItem,data){
+                    return data.labels[tooltipItem[0].index];
+                },
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label;
+                }
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {
                     max: 10,
                     min: 0,
-                    stepSize: 1
+                    stepSize: 1,
+                    callback: function(value) {
+                        return value.substr(16,5);//truncate on seconds
+                    }
                 }
             }],
             yAxes: [{

@@ -11,7 +11,8 @@ myChart_TEMP = new Chart(ctx_TEMP, {
     data: {
         datasets: [{
             label: '°C',
-            data: [0],
+            notifies: [],
+            data: [],
             backgroundColor: gradient_TEMP,
             borderColor: [
                 'rgba(70,102,255, 1)'
@@ -47,7 +48,8 @@ myChart_HUM = new Chart(ctx_HUM, {
     data: {
         datasets: [{
             label: 'Humidity',
-            data: [0],
+            data: [],
+            notifies: [],
             backgroundColor: [
                 'rgba(19, 19, 19, 0.1)'
             ],

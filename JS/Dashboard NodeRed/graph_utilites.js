@@ -1,4 +1,4 @@
-var top_limit = 0;
+var top_limit;
 //ADDABLE VALUES BEFORE THE GRAPH PUSHES OUT THE FIRST POINT
 var addable_values = 0;
 function addData(chart, label, d, index, type, notify) {
@@ -18,10 +18,10 @@ function addData(chart, label, d, index, type, notify) {
         case 'altitude':
     }
     */
-    if (index >= top_limit + addable_values){
+    /*if (index >= top_limit + addable_values){
         console.log("index: "+index);
         removeData(chart,type);
-    }
+    }*/
     //Graphs limits
     /*
     if (type != "altitude" && index > 10){

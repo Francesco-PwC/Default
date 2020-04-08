@@ -1,4 +1,4 @@
-var myChart;
+var myChart_RPM;
 var ctx = document.getElementById('machineChart');
 cont = ctx.getContext("2d");
 var gradient_RPM = cont.createLinearGradient(0, 0, 0, 500);
@@ -6,11 +6,12 @@ gradient_RPM.addColorStop(0, "rgba(0,212,255,0.1)");
 gradient_RPM.addColorStop(0.63, "rgba(121,9,115,0.1)");
 gradient_RPM.addColorStop(1, "rgba(19,19,19,0.1)");
 
-myChart = new Chart(ctx, {
+myChart_RPM = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
             label: 'Round per Minute',
+	    notifies: [],
             data: [0],
             backgroundColor: gradient_RPM,
             borderColor: [
@@ -27,12 +28,30 @@ myChart = new Chart(ctx, {
         }]
     },
     options: {
+         tooltips: {
+            callbacks: {
+                title: function(tooltipItem,data){
+                    return data.labels[tooltipItem[0].index];
+                },
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label;
+                }
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {
                     max: 10,
                     min: 0,
-                    stepSize: 1
+                    stepSize: 1,
+	            callback: function(value) {
+                        return value.substr(16,5);//truncate on seconds
+                    }
                 }
             }],
             yAxes: [{
@@ -82,14 +101,15 @@ myChart = new Chart(ctx, {
     }
 });
 
-var myChart_2;
+var myChart_MAC_T;
 var ctx_2 = document.getElementById('tempChart');
 
-myChart_2 = new Chart(ctx_2, {
+myChart_MAC_T = new Chart(ctx_2, {
     type: 'line',
     data: {
         datasets: [{
             label: 'Temperature',
+	    notifies: [],
             data: [0],
             backgroundColor: gradient_RPM,
             borderColor: [
@@ -99,12 +119,30 @@ myChart_2 = new Chart(ctx_2, {
         }]
     },
     options: {
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItem,data){
+                    return data.labels[tooltipItem[0].index];
+                },
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label;
+                }
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {
                     max: 10,
                     min: 0,
-                    stepSize: 1
+                    stepSize: 1,
+		    callback: function(value) {
+                        return value.substr(16,5);//truncate on seconds
+                    }
                 }
             }],
             yAxes: [{
